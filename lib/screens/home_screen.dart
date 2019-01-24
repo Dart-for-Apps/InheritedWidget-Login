@@ -27,7 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget get _homeView {
     // 잘못된 부분 정정
-    return Center(child: AuthScreen());
+    return Center(
+      child: appState.user == null
+          ? AuthScreen()
+          : Text('User is ${appState.user.displayName}'),
+    );
   }
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../app_state_container.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    final container = AppStateContainer.of(context);
     return Container(
       width: width,
       child: Column(
@@ -16,7 +18,9 @@ class _AuthScreenState extends State<AuthScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           RaisedButton(
-            onPressed: () => print('Log in!'),
+            onPressed: (){
+              container.logIntoFirebase();
+            },
             color: Colors.white,
 
             child: Container(
