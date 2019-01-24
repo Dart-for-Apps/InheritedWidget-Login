@@ -6,10 +6,13 @@ class AuthScreen extends StatefulWidget {
   _AuthScreenState createState() => _AuthScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _AuthScreenState extends State<AuthScreen>{
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+
+    // 실제 로그인을 담당하는 container를 가져온다.
+    // 해당 컨테이너는 최상위 root widget 이므로 어느 context로든 가져올 수 있다.
     final container = AppStateContainer.of(context);
     return Container(
       width: width,
@@ -19,10 +22,10 @@ class _AuthScreenState extends State<AuthScreen> {
         children: <Widget>[
           RaisedButton(
             onPressed: (){
+              // 앱 전체 컨테이너의 login 루틴을 따르도록 호출
               container.logIntoFirebase();
             },
             color: Colors.white,
-
             child: Container(
               width: 230.0,
               height: 50.0,
