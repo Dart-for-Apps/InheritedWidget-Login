@@ -50,6 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Suite'),
       ),
       body: body,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          container.logout();
+        },
+        child: Text('Logout'),
+      ),
     );
   }
 }

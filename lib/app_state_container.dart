@@ -75,10 +75,22 @@ class _AppStateContainerState extends State<AppStateContainer> {
     return user;
   }
 
+  Future<Null> logout() async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    _auth.signOut();
+    googleSIgnIn.signOut();
+    setState(() {
+      state.user = null;
+    });
+  }
+
   Future<Null> logIntoFirebase() async {
     if (googleUser == null) {
       googleUser = await googleSIgnIn.signIn();
     }
+    setState(() {
+      state.isLoading = true;
+    });
     FirebaseUser firebaseUser;
     FirebaseAuth _auth = FirebaseAuth.instance;
     try {
